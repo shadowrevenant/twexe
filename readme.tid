@@ -64,6 +64,18 @@ All three will create a button with the text "display name" (the 3rd case will d
 * Copy Path to clipboard
 ** for external scripts only, copies the target path to the cliboard
 
+!Nested Macro Support!
+
+Functions like `<$list/>` are now supported, allowing you to leverage more tiddlywiki syntax to make scripts more dynamic. (W.I.P)
+
+!Direct File / Folder Selection Macro's
+To have a button to select a file / folder you can use the folowing
+
+```
+<$select-file tiddler="Example Tiddler" field="File" default="C:/users/demo/Desktop/Example.txt">Select Target File</$select-file>
+
+<$select-folder tiddler="Example Tiddler" index="File" default="C:/users/demo/Desktop/Example Folder/">Browse For Directory...</$select-folder>
+```
 
 !Args / Fields
 
