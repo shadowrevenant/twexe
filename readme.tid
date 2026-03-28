@@ -1,5 +1,9 @@
 title: $:/plugins/welford/twexe/readme
 
+! INFO
+
+This in an unofficial fork of welford's TWEXE aimed to extend support to more features like direct file select, wiki systax-to-batch and more.
+
 ! TWEXE
 
 Tiddlywiki widget to run batch scripts/exes from either. 
