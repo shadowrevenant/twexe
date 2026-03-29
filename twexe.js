@@ -200,11 +200,7 @@ TWExeWidget.prototype.render = function (parent,nextSibling) {
 		button.setAttribute("title", this.tooptip);
 		if (self.target) {
 			var tmp = button.getAttribute("title")
-			button.setAttribute( "title", (tmp ? tmp : "") +
-"\\
-\\n- - - - - - - - - - - - - - - - - - - - - - - - - - - -\\
-\\ncalls : " + self.target.split("\\\\").join("/") );
-		}
+button.setAttribute( "title", (tmp ? tmp : "") + "\n\n- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\ncalls : " + self.target.split("\\").join("/") );
 
 		button.addEventListener("click", function (event) {
 			self.GetLatestDetails();
