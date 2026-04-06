@@ -1,10 +1,10 @@
-/*\\
+/*\
 title: $:/plugins/welford/twexe/twexe.js
 type: application/javascript
 module-type: widget
 
 twexe widget
-\\*/
+\*/
 (function(){
 /*jslint node: true, browser: true */
 /*global $tw: false */
@@ -159,7 +159,13 @@ TWExeWidget.prototype.GetLatestDetails = function ()
 			// FIX: Use renderTiddler instead of ResolveFinalText so that
 			// widgets like <$list>, <$set>, <$vars>, etc. are fully
 			// evaluated before their output is written to the .bat file.
-			this.contents = this.wiki.renderTiddler("text/plain", this.tiddler_name, {
+			// Preserve line breaks by auto-injecting <br> at the end of each line (except pragma lines).
+			var rawText = this.wiki.getTiddlerText(this.tiddler_name) || "";
+			var processedText = rawText.split('\n').map(function(line) {
+				// Leave pragma / macro lines starting with \ unchanged.
+				return line.charAt(0) === '\\' ? line : line + '<br>';
+			}).join('\n');
+			this.contents = this.wiki.renderText("text/plain", "text/vnd.tiddlywiki", processedText, {
 				variables: { currentTiddler: this.tiddler_name }
 			});
 		}
@@ -198,10 +204,10 @@ TWExeWidget.prototype.render = function (parent,nextSibling) {
 	button.innerHTML = (this.isFolder ? "Folder: " : "") + this.name;
 	if(!button.isTiddlyWikiFakeDom) {
 		button.setAttribute("title", this.tooptip);
-		if (self.target) {
-			var tmp = button.getAttribute("title")
-button.setAttribute( "title", (tmp ? tmp : "") + "\n\n- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\ncalls : " + self.target.split("\\").join("/") );
-
+        if (self.target) {
+            var tmp = button.getAttribute("title")
+            button.setAttribute( "title", (tmp ? tmp : "") + "\n\n- - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\ncalls : " + self.target.split("\\").join("/") );
+        }
 		button.addEventListener("click", function (event) {
 			self.GetLatestDetails();
 			if(self.isImmediate){
