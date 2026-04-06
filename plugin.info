@@ -3,8 +3,8 @@
 	"name" : "twexe",
 	"description": "twexe. When in HTA Runs local exe/batch files Or those embedded in a Tiddler",
 	"author": "James W. Anderson / Blake Hunter",
-	"version": "1.4.4",
-	"core-version": ">=5.0.0",
+	"version": "1.4.5",
+	"core-version": "<=5.3.3",
 	"source": "https://github.com/shadowrevenant/twexe",
 	"list": "readme",
 	"plugin-type": "plugin"
